@@ -7,14 +7,14 @@ const db = mysql.createConnection(
   {
     host: "localhost",
     user: "root",
-    password: "",
-    database: "",
+    password: "password",
+    database: "employee_db",
   },
   console.log(`Connected to employees_db database.`)
 );
 
-function workTime() {
-  const logoText = logo({ name: "TEAM * OF * DOOFS \n :p" }).render();
+function wocka() {
+  const logoText = logo({ name: "Wocka \n :p" }).render();
   console.log(logoText);
   inquirer
     .prompt([
@@ -68,3 +68,19 @@ function workTime() {
       }
     });
 }
+function viewAllEmployees(){
+  db.query("select * from employee", function(err, res){
+    err?console.log(err): console.table(res), wocka()
+  })
+}
+function viewAllRoles(){
+  db.query("select * from role", function(err, res){
+    err?console.log(err): console.table(res), wocka()
+  })
+}
+function viewAllDepartments(){
+  db.query("select * from department", function(err, res){
+    err?console.log(err): console.table(res), wocka()
+  })
+}
+wocka();
